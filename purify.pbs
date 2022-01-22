@@ -1,0 +1,11 @@
+#!/bin/sh
+#$ -cwd
+#PBS -N testpy
+#PBS -q workq
+#PBS -V
+
+export PATH="/home/bt1/18CS10018/anaconda3/bin:$PATH"
+
+cat "" > out.log
+CUDA_VISIBLE_DEVICES=0,1 python purify.py
+rm -R purify.pbs.*
