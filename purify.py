@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 import numpy as np
-from torchvision.datasets import MNIST,CIFAR10
+from torchvision.datasets import MNIST,CIFAR10,ImageNet
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
@@ -46,8 +46,10 @@ transform = transforms.Compose([
         transforms.ToTensor(),
 ])
 
-train_dataset_raw = CIFAR10(dataset_path, transform=transform, train=True, download=True)
-test_dataset_raw  = CIFAR10(dataset_path, transform=transform, train=False, download=True)
+train_dataset_raw = ImageNet(dataset_path, transform=transform, split='train', download=True)
+# train_dataset_raw = CIFAR10(dataset_path, transform=transform, train=True, download=True)
+test_dataset_raw  = ImageNet(dataset_path, transform=transform, train=False, download=True)
+exit(0)
 print("Length of test dataset is ", len(test_dataset_raw))
 print("Length of train dataset is ", len(train_dataset_raw))
 
